@@ -1,0 +1,10 @@
+.idea {
+    box-sizing: border-box;
+    background: cornflowerblue;
+    color: #171717;
+    font-size: 26px;
+    font-weight: 600;
+    padding: 16px 20px;
+    margin-bottom: 20px;
+    width: 100%;
+}

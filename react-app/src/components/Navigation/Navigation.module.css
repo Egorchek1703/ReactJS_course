@@ -1,0 +1,26 @@
+.navigation {
+    grid-area: nav;
+    box-sizing: content-box;
+}
+
+.navigation_list {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    row-gap: 10px;
+}
+
+.item {
+    width: 80%;
+    padding: 10px 16px;
+    border: 2px solid rgb(21, 182, 251);
+    border-radius: 20px;
+}
+
+.item a {
+    color: rgb(21, 182, 251);
+    font-size: 20px;
+    font-weight: 600;
+
+}

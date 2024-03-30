@@ -1,0 +1,46 @@
+.ideas {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 30px 0px 30px 40px;
+}
+
+.ideas h4 {
+    color: cornflowerblue;
+    font-size: 46px;
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+.create_idea_input {
+    padding: 8px 15px;
+    margin: 20px 0;
+    font-size: 20px;
+    font-weight: 500;
+    background: transparent;
+    outline: none;
+    border: 2px solid cornflowerblue;
+    color: rgb(21, 182, 251);
+}
+
+.create_idea_input::placeholder {
+    color: rgba(100, 149, 237, .4);
+    padding: 6px 8px;
+}
+
+.add_idea_btn {
+    color: #171717;
+    padding: 8px 15px;
+    font-size: 20px;
+    font-weight: 600;
+    border: 2px solid transparent;
+    background: cornflowerblue;
+
+    cursor: pointer;
+    transition: all ease .4s;
+}
+
+.add_idea_btn:hover {
+    border: 2px solid cornflowerblue;
+    color: cornflowerblue;
+    background: transparent;
+}
