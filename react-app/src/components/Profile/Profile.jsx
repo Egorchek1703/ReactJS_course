@@ -5,7 +5,7 @@ import Ideas from "./Ideas/Ideas";
 
 function Profile() {
     return (
-        <main className={ProfileStyles["profile"]}>
+        <section className={ProfileStyles["profile"]}>
             <div className={ProfileStyles["profile_header"]}>
                 <img src={ProfileShapka} alt="Profile" />
             </div>
@@ -18,7 +18,7 @@ function Profile() {
             </div>
 
             <Ideas />
-        </main>
+        </section>
     );
 }
 export default Profile

@@ -30,9 +30,13 @@ button {
     margin: 0 auto;
 
     grid-template-rows: 1fr 10fr;
-    grid-template-columns: 1fr 5fr;
+    grid-template-columns: 1fr 6fr;
 
     grid-template-areas:
         'header header'
-        'nav profile';
+        'navigation content';
+}
+
+.app_wrapper_content {
+    grid-area: content;
 }

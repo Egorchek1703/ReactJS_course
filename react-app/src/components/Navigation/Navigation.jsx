@@ -6,10 +6,10 @@ function Navigation() {
         <nav className={NavigationStyles["navigation"]}>
             <ul className={NavigationStyles["navigation_list"]}>
                 <li className={NavigationStyles["item"]}>
-                    <a href="/">Profile</a>
+                    <a href="/profile">Profile</a>
                 </li>
                 <li className={NavigationStyles["item"]}>
-                    <a href="/">Messages</a>
+                    <a href="/dialogs">Messages</a>
                 </li>
                 <li className={NavigationStyles["item"]}>
                     <a href="/">Feed</a>
