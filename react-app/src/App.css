@@ -2,6 +2,7 @@
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 body {
@@ -29,7 +30,7 @@ button {
     width: 1200px;
     margin: 0 auto;
 
-    grid-template-rows: 1fr 10fr;
+    grid-template-rows: 77px 1fr;
     grid-template-columns: 1fr 6fr;
 
     grid-template-areas:

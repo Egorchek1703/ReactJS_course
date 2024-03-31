@@ -1,3 +1,60 @@
 .dialogs {
+    display: grid;
+
+    grid-template-columns: 1fr 2.5fr;
+    grid-template-rows: 1fr;
+
+    grid-template-areas: "chats messages";
+    column-gap: 20px;
+}
+
+/* Chats (users) */
+
+.chats {
+    grid-area: chats;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    row-gap: 10px;
+}
+
+.chat {
+    color: #171717;
+    background: cornflowerblue;
+    border: 2px solid cornflowerblue;
+    width: 100%;
+    padding: 12px 20px;
+}
+
+.chat.activeChat {
     color: cornflowerblue;
+    border: 2px solid cornflowerblue;
+    background: #171717;
+}
+
+.user_name {
+    font-weight: 600;
+    font-size: 20px;
+}
+
+/* Messages with current user */
+
+.messages_with_user {
+    grid-area: messages;
+}
+
+.message {
+    color: rgb(21, 182, 251);
+}
+
+.avatar_of_user {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+.text_of_message {
+    font-size: 18px;
+    font-weight: 600;
 }

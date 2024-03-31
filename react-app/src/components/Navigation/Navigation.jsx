@@ -1,24 +1,34 @@
 import NavigationStyles from "./Navigation.module.css";
+import { NavLink } from "react-router-dom"
 
-console.log(NavigationStyles);
 function Navigation() {
     return (
         <nav className={NavigationStyles["navigation"]}>
             <ul className={NavigationStyles["navigation_list"]}>
                 <li className={NavigationStyles["item"]}>
-                    <a href="/profile">Profile</a>
+                    <NavLink to="/profile" className={navData => navData.isActive ? NavigationStyles.active : NavigationStyles.link}>
+                        Profile
+                    </NavLink>
                 </li>
                 <li className={NavigationStyles["item"]}>
-                    <a href="/dialogs">Messages</a>
+                    <NavLink to="/dialogs" className={navData => navData.isActive ? NavigationStyles.active : NavigationStyles.link}>
+                        Messages
+                    </NavLink>
                 </li>
                 <li className={NavigationStyles["item"]}>
-                    <a href="/">Feed</a>
+                    <NavLink to="/news" className={navData => navData.isActive ? NavigationStyles.active : NavigationStyles.link}>
+                        News
+                    </NavLink>
                 </li>
                 <li className={NavigationStyles["item"]}>
-                    <a href="/">Music</a>
+                    <NavLink to="/music" className={navData => navData.isActive ? NavigationStyles.active : NavigationStyles.link}>
+                        Music
+                    </NavLink>
                 </li>
                 <li className={NavigationStyles["item"]}>
-                    <a href="/">Settings</a>
+                    <NavLink to="/settings" className={navData => navData.isActive ? NavigationStyles.active : NavigationStyles.link}>
+                        Settings
+                    </NavLink>
                 </li>
             </ul>
         </nav>

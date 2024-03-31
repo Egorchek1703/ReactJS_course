@@ -6,21 +6,32 @@
 .navigation_list {
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: flex-start;
     flex-direction: column;
     row-gap: 10px;
 }
 
 .item {
     width: 80%;
-    padding: 10px 16px;
-    border: 2px solid rgb(21, 182, 251);
-    border-radius: 20px;
 }
 
 .item a {
-    color: rgb(21, 182, 251);
+    display: block;
+    min-width: 100%;
+    border-radius: 20px;
     font-size: 20px;
     font-weight: 600;
+    padding: 10px 16px;
+    width: 100%;
+    transition: all ease .4s;
+}
 
+.link {
+    border: 2px solid rgb(21, 182, 251);
+    color: rgb(21, 182, 251);
+}
+
+.active {
+    border: 2px solid rgb(48, 255, 234);
+    color: rgb(48, 255, 234);
 }
