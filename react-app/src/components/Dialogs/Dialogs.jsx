@@ -1,49 +1,33 @@
 import DialogsStyles from "./Dialogs.module.css";
+import DialogItem from "./DialogItem/DialogItem";
+import Message from "./Message/Message"
+
+let usersForChats = [
+    { id: 1, name: "Лиза", age: 23 },
+    { id: 2, name: "Юля", age: 46 },
+    { id: 3, name: "Андрей", age: 49 },
+    { id: 4, name: "Никита", age: 22 },
+    { id: 5, name: "Борис", age: 69 },
+    { id: 6, name: "Наталья", age: 67 },
+]
+
+let messagesData = [
+    { id: 1, text: "How are you?" },
+    { id: 2, text: "Let's go to learn ReactJS" },
+    { id: 3, text: "Are you sure about this?" },
+    { id: 4, text: "Not exactly" },
+    { id: 5, text: "So let's go to the park" },
+]
 
 function Dialogs() {
     return (
         <section className={DialogsStyles["dialogs"]}>
-            <ul className={DialogsStyles["chats"]}>
-                <li className={DialogsStyles["chat"] + " " + DialogsStyles["activeChat"]}>
-                    <p className={DialogsStyles["user_name"]}>Лиза</p>
-                </li>
-
-                <li className={DialogsStyles["chat"]}>
-                    <p className={DialogsStyles["user_name"]}>Юля</p>
-                </li>
-
-                <li className={DialogsStyles["chat"]}>
-                    <p className={DialogsStyles["user_name"]}>Андрей</p>
-                </li>
-
-                <li className={DialogsStyles["chat"]}>
-                    <p className={DialogsStyles["user_name"]}>Никита</p>
-                </li>
-
-                <li className={DialogsStyles["chat"]}>
-                    <p className={DialogsStyles["user_name"]}>Борис</p>
-                </li>
-
-                <li className={DialogsStyles["chat"]}>
-                    <p className={DialogsStyles["user_name"]}>Наталья</p>
-                </li>
+            <ul className={DialogsStyles["chats_list"]}>
+                {usersForChats.map((user) => <DialogItem name={user.name} id={user.id} />)}
             </ul>
 
             <div className="messages_with_user">
-                <div className={DialogsStyles["message"]}>
-                    <img className={DialogsStyles["avatar_of_user"]} src="" alt="User avatar" />
-                    <p className={DialogsStyles["text_of_message"]}>Zdarova bedolaga</p>
-                </div>
-
-                <div className={DialogsStyles["message"]}>
-                    <img className={DialogsStyles["avatar_of_user"]} src="" alt="User avatar" />
-                    <p className={DialogsStyles["text_of_message"]}>Let's go to learn ReactJS</p>
-                </div>
-
-                <div className={DialogsStyles["message"]}>
-                    <img className={DialogsStyles["avatar_of_user"]} src="" alt="User avatar" />
-                    <p className={DialogsStyles["text_of_message"]}>Are you sure about this?</p>
-                </div>
+                {messagesData.map(messageObject => <Message messageText={messageObject.text} />)}
             </div>
         </section>
     );

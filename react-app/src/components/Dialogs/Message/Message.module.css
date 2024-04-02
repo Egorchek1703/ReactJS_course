@@ -1,0 +1,14 @@
+.message {
+    color: rgb(21, 182, 251);
+}
+
+.avatar_of_user {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+.text_of_message {
+    font-size: 18px;
+    font-weight: 600;
+}
