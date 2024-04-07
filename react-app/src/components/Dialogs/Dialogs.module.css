@@ -1,11 +1,16 @@
 .dialogs {
     display: grid;
 
-    grid-template-columns: 1fr 2.5fr;
-    grid-template-rows: 1fr;
+    grid-template-columns: 200px 1fr;
+    grid-template-rows: 1fr 100px;
 
-    grid-template-areas: "chats messages";
-    column-gap: 20px;
+    grid-template-areas:
+        "chats messages"
+        "chats create_message";
+    column-gap: 40px;
+    row-gap: 0px;
+
+    padding-bottom: 20px;
 }
 
 /* Chats (users) */
@@ -27,4 +32,21 @@
 
 .messages_with_user {
     grid-area: messages;
+    border: 3px solid cornflowerblue;
+
+    padding: 20px;
+
+    height: calc(100vh - 100px - 77px - 20px);
+    /* 
+        77px - header
+        20px - padding-bottom у dialogs
+        100px - высота textarea (CreateMessage)
+    */
+    overflow-y: auto;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    box-sizing: border-box;
 }

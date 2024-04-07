@@ -8,7 +8,7 @@ function DialogItem(props) {
     return (
         <li>
             <NavLink to={pathToMessages} className={navData => navData.isActive ? DialogItemStyles.activeChat : DialogItemStyles.chat}>
-                <p className={DialogItemStyles["user_name"]}>{props.name}</p>
+                <p className={DialogItemStyles["user_name"]}>{props.name} {props.surname}</p>
             </NavLink>
         </li>
     )

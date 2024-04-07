@@ -1,6 +1,11 @@
 .navigation {
     grid-area: navigation;
     box-sizing: content-box;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    row-gap: 30px;
 }
 
 .navigation_list {
@@ -32,6 +37,20 @@
 }
 
 .active {
-    border: 2px solid rgb(48, 255, 234);
-    color: rgb(48, 255, 234);
+    border: 2px solid cornflowerblue;
+    color: cornflowerblue;
+}
+
+/* Friends */
+.friends_in_sidebar {
+    color: cornflowerblue;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    border: 2px solid cornflowerblue;
+    border-radius: 30px;
+
+    padding: 10px;
 }

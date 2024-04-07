@@ -12,7 +12,9 @@ function ProfileInfo() {
             <div className={ProfileInfoStyles["photo_and_description"]}>
                 <img className={ProfileInfoStyles["photo"]} src={Avatar} alt="avatar" draggable />
                 <div className={ProfileInfoStyles["description"]}>
-                    Description
+                    <h3>Егор Семёнов</h3>
+                    <p>Возраст: <span>23</span></p>
+                    <p>Не бойся когда ты один, бойся когда ты два</p>
                 </div>
             </div>
         </div>

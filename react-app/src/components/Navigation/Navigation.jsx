@@ -1,7 +1,8 @@
 import NavigationStyles from "./Navigation.module.css";
 import { NavLink } from "react-router-dom"
+import Friend from "./Friend/Friend"
 
-function Navigation() {
+function Navigation(props) {
     return (
         <nav className={NavigationStyles["navigation"]}>
             <ul className={NavigationStyles["navigation_list"]}>
@@ -31,6 +32,10 @@ function Navigation() {
                     </NavLink>
                 </li>
             </ul>
+
+            <section className={NavigationStyles["friends_in_sidebar"]}>
+                {props.state.friendsInSidebar.map(friend => <Friend name={friend.name} avatarSRC={friend.avatarSRC} />)}
+            </section>
         </nav>
     );
 }
