@@ -53,3 +53,8 @@
     color: cornflowerblue;
     background: transparent;
 }
+
+.list_of_ideas {
+    display: flex;
+    flex-direction: column-reverse;
+}

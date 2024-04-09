@@ -1,13 +1,20 @@
 import React from "react";
 import CreateMessageStyles from "./CreateMessage.module.css"
 
-function CreateMessage() {
+function CreateMessage(props) {
 
     let textFromWriteMessageTextarea = React.createRef();
 
-    let sendMessage = () => {
-        console.log(textFromWriteMessageTextarea.current.value)
+    // Добавление сообщения в state
+    let handleAddMessage = () => {
+        props.addMessage()
     };
+
+    // Посимвольное обновление сообщения и его отрисовка
+    let handleUpdateWrittingMessage = () => {
+        props.updateNewMessage(textFromWriteMessageTextarea.current.value)
+    };
+
 
     return (
         <form className={CreateMessageStyles["create_message_form"]} action="/">
@@ -15,6 +22,9 @@ function CreateMessage() {
                 className={CreateMessageStyles["write_message_textarea"]}
                 placeholder="Введите сообщение"
                 ref={textFromWriteMessageTextarea}
+
+                value={props.newMessageTextFromTextarea}
+                onChange={handleUpdateWrittingMessage}
             >
 
             </textarea>
@@ -22,7 +32,7 @@ function CreateMessage() {
             <button
                 className={CreateMessageStyles["send_message_btn"]}
                 type="button"
-                onClick={sendMessage}
+                onClick={handleAddMessage}
             >
                 Send
             </button>

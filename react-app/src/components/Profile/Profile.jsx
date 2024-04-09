@@ -6,7 +6,16 @@ function Profile(props) {
     return (
         <section className={ProfileStyles["profile"]}>
             <ProfileInfo />
-            <Ideas postIdeaData={props.state.postIdeaData} />
+            <Ideas
+                // Сами посты
+                postIdeaData={props.state.postIdeaData}
+                // Состояние textarea добавляющей посты
+                newPostIdeaText={props.state.newPostIdeaText}
+                // Функция добавления поста
+                addPostIdea={props.addPostIdea}
+                // Функция обновления текста в textarea
+                updateNewPostIdea={props.updateNewPostIdea}
+            />
         </section>
     );
 }

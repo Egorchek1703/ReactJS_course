@@ -18,11 +18,19 @@ function App(props) {
         <Routes>
           {/* Profile */}
           <Route
-            path="/profile" element={<Profile state={props.state.profilePage} />}
+            path="/profile" element={<Profile
+              state={props.state.profilePage}
+              addPostIdea={props.addPostIdea}
+              updateNewPostIdea={props.updateNewPostIdea}
+            />}
           />
 
           {/* Dialogs */}
-          <Route path="/dialogs" element={<Dialogs state={props.state.dialogsPage} />}
+          <Route path="/dialogs" element={<Dialogs
+            state={props.state.dialogsPage}
+            updateNewMessage={props.updateNewMessage}
+            addMessage={props.addMessage}
+          />}
           />
 
           {/* News */}

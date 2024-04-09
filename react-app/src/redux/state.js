@@ -1,3 +1,5 @@
+import { renderEntireTree } from "../render"
+
 let state = {
     // Данные для Dialogs
     dialogsPage: {
@@ -18,16 +20,18 @@ let state = {
             { id: 6, text: "I don't feel like to go to the park today", isMyMessage: false },
             { id: 7, text: "Is anything OK?", isMyMessage: true },
         ],
+        newMessageTextFromTextarea: "",
     },
 
     // Данные для Profile -> Ideas
     profilePage: {
         postIdeaData: [
             { id: 1, likesCount: 7, text: "I'm pooping" },
-            { id: 1, likesCount: 21, text: "Why don't we create an app" },
-            { id: 1, likesCount: 14, text: "How to create a react app?" },
-            { id: 1, likesCount: 52, text: "This's terribly difficult" },
+            { id: 2, likesCount: 21, text: "Why don't we create an app" },
+            { id: 3, likesCount: 14, text: "How to create a react app?" },
+            { id: 4, likesCount: 52, text: "This's terribly difficult" },
         ],
+        newPostIdeaText: "",
     },
 
     // Данные для Navigation -> FriendsInSidebar
@@ -41,6 +45,57 @@ let state = {
             { id: 6, name: "Лиза", surname: "Кочеткова", avatarSRC: "../../../images/friend_avatar.jpg" },
         ]
     },
+}
+
+// Posts
+export let addPostIdea = () => {
+    // Создаем новый объект сообщения
+    let newPostIdea = {
+        id: state.profilePage.postIdeaData.length + 1,
+        likesCount: 0,
+        text: state.profilePage.newPostIdeaText,
+    }
+
+    // Добавляем его в массив данных
+    state.profilePage.postIdeaData.push(newPostIdea)
+
+    // Перерисовываем приложение опираясь на обновленные данные
+    renderEntireTree(state, addPostIdea, updateNewPostIdea, addMessage, updateNewMessage)
+}
+
+export let updateNewPostIdea = (textOfNewPostIdea) => {
+    // Меняем соответствующее значение state
+    state.profilePage.newPostIdeaText = textOfNewPostIdea
+
+    // Перерисовываем приложение опираясь на обновленные данные
+    renderEntireTree(state, addPostIdea, updateNewPostIdea, addMessage, updateNewMessage)
+}
+
+// Messages
+export let addMessage = () => {
+    // Создаем объект сообщения
+    let messageObject = {
+        id: state.dialogsPage.messagesData.length + 1,
+        text: state.dialogsPage.newMessageTextFromTextarea,
+        isMyMessage: true,
+    }
+
+    // Добавяем в массив сообщений сообщение опираясь на текущее состояние textarea
+    state.dialogsPage.messagesData.push(messageObject);
+
+    // Обнуляем содержимое textarea
+    state.dialogsPage.newMessageTextFromTextarea = "";
+
+    // Перерисовываем приложение, учитывая добавленное сообщение
+    renderEntireTree(state, addPostIdea, updateNewPostIdea, addMessage, updateNewMessage)
+}
+
+export let updateNewMessage = (textOfNewMessageTextarea) => {
+    // Обновляем текущий текст в textarea
+    state.dialogsPage.newMessageTextFromTextarea = textOfNewMessageTextarea
+
+    // Ререндерим страницу, исходя из обновленных данных (отображаем изменения состояния textarea в UI)
+    renderEntireTree(state, addPostIdea, updateNewPostIdea, addMessage, updateNewMessage)
 }
 
 export default state

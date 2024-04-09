@@ -14,7 +14,11 @@ function Dialogs(props) {
                 {props.state.messagesData.map(messageObject => <Message messageText={messageObject.text} isMyMessage={messageObject.isMyMessage} />)}
             </div>
 
-            <CreateMessage />
+            <CreateMessage
+                newMessageTextFromTextarea={props.state.newMessageTextFromTextarea}
+                updateNewMessage={props.updateNewMessage}
+                addMessage={props.addMessage}
+            />
         </section>
     );
 }
