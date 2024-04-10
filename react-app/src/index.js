@@ -3,27 +3,25 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 
-import state, { addPostIdea, updateNewPostIdea, addMessage, updateNewMessage, subscribe } from './redux/state';
+import store from './redux/state';
 
 
 const root = ReactDOM.createRoot(document.getElementById("root"))
 
-let renderEntireTree = (stateParam, addPostIdeaParam, updateNewPostIdeaParam, addMessageParam, updateNewMessageParam) => {
+let renderEntireTree = (store) => {
     root.render(
         <BrowserRouter>
             <App
-                state={stateParam}
-                addPostIdea={addPostIdeaParam}
-                updateNewPostIdea={updateNewPostIdeaParam}
-                addMessage={addMessageParam}
-                updateNewMessage={updateNewMessageParam}
+                state={store.getState()}
+                addPostIdea={store.addPostIdea.bind(store)}
+                updateNewPostIdea={store.updateNewPostIdea.bind(store)}
+                addMessage={store.addMessage.bind(store)}
+                updateNewMessage={store.updateNewMessage.bind(store)}
             />
         </BrowserRouter>
     );
 };
 
-// Функция передает местный renderEntireTree() в state.js не используя импорт
-subscribe(renderEntireTree)
+store.subscribe(renderEntireTree)
 
-// Функция первоначального рендера страницы
-renderEntireTree(state, addPostIdea, updateNewPostIdea, addMessage, updateNewMessage)
+renderEntireTree(store)
