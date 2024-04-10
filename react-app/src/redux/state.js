@@ -1,4 +1,7 @@
-import { renderEntireTree } from "../render"
+// Создаем заглушку
+let renderEntireTreeFromState = () => {
+    console.log("State was changed");
+}
 
 let state = {
     // Данные для Dialogs
@@ -42,7 +45,7 @@ let state = {
             { id: 3, name: "Юля", surname: "Семёнова", avatarSRC: "../../../images/friend_avatar.jpg" },
             { id: 4, name: "Борис", surname: "Зварыкин", avatarSRC: "../../../images/friend_avatar.jpg" },
             { id: 5, name: "Наталья", surname: "Зварыкина", avatarSRC: "../../../images/friend_avatar.jpg" },
-            { id: 6, name: "Лиза", surname: "Кочеткова", avatarSRC: "../../../images/friend_avatar.jpg" },
+            { id: 6, name: "Иван", surname: "Шульгин", avatarSRC: "../../../images/friend_avatar.jpg" },
         ]
     },
 }
@@ -60,7 +63,7 @@ export let addPostIdea = () => {
     state.profilePage.postIdeaData.push(newPostIdea)
 
     // Перерисовываем приложение опираясь на обновленные данные
-    renderEntireTree(state, addPostIdea, updateNewPostIdea, addMessage, updateNewMessage)
+    renderEntireTreeFromState(state, addPostIdea, updateNewPostIdea, addMessage, updateNewMessage)
 }
 
 export let updateNewPostIdea = (textOfNewPostIdea) => {
@@ -68,7 +71,7 @@ export let updateNewPostIdea = (textOfNewPostIdea) => {
     state.profilePage.newPostIdeaText = textOfNewPostIdea
 
     // Перерисовываем приложение опираясь на обновленные данные
-    renderEntireTree(state, addPostIdea, updateNewPostIdea, addMessage, updateNewMessage)
+    renderEntireTreeFromState(state, addPostIdea, updateNewPostIdea, addMessage, updateNewMessage)
 }
 
 // Messages
@@ -87,7 +90,7 @@ export let addMessage = () => {
     state.dialogsPage.newMessageTextFromTextarea = "";
 
     // Перерисовываем приложение, учитывая добавленное сообщение
-    renderEntireTree(state, addPostIdea, updateNewPostIdea, addMessage, updateNewMessage)
+    renderEntireTreeFromState(state, addPostIdea, updateNewPostIdea, addMessage, updateNewMessage)
 }
 
 export let updateNewMessage = (textOfNewMessageTextarea) => {
@@ -95,7 +98,15 @@ export let updateNewMessage = (textOfNewMessageTextarea) => {
     state.dialogsPage.newMessageTextFromTextarea = textOfNewMessageTextarea
 
     // Ререндерим страницу, исходя из обновленных данных (отображаем изменения состояния textarea в UI)
-    renderEntireTree(state, addPostIdea, updateNewPostIdea, addMessage, updateNewMessage)
+    renderEntireTreeFromState(state, addPostIdea, updateNewPostIdea, addMessage, updateNewMessage)
 }
+
+// Создаем функцию которая при вызове в другом месте и получении другой функции в качестве параметра перезапишет значение местной renderEntireTreeFromState() на переданную
+// при вызове в другом месте функцию
+export const subscribe = (observer) => {
+    renderEntireTreeFromState = observer
+}
+
+window.state = state
 
 export default state

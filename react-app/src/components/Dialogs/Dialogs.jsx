@@ -11,7 +11,7 @@ function Dialogs(props) {
             </ul>
 
             <div className={DialogsStyles["messages_with_user"]}>
-                {props.state.messagesData.map(messageObject => <Message messageText={messageObject.text} isMyMessage={messageObject.isMyMessage} />)}
+                {props.state.messagesData.map((messageObject) => <Message messageText={messageObject.text} isMyMessage={messageObject.isMyMessage} />)}
             </div>
 
             <CreateMessage
