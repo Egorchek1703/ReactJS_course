@@ -16,8 +16,7 @@ function Dialogs(props) {
 
             <CreateMessage
                 newMessageTextFromTextarea={props.state.newMessageTextFromTextarea}
-                updateNewMessage={props.updateNewMessage}
-                addMessage={props.addMessage}
+                dispatch={props.dispatch}
             />
         </section>
     );

@@ -1,5 +1,6 @@
+// Store
 let store = {
-    // State
+    // Private properties
     _state: {
         dialogsPage: {
             usersForChats: [
@@ -43,53 +44,85 @@ let store = {
             ]
         },
     },
-    getState() {
-        return this._state
-    },
-    // Render (заглушка)
     _callSubscriber() {
         console.log("Это заглушка");
     },
-    // Posts
-    addPostIdea() {
-        let newPostIdea = {
-            id: this._state.profilePage.postIdeaData.length + 1,
-            likesCount: 0,
-            text: this._state.profilePage.newPostIdeaText,
-        }
 
-        this._state.profilePage.postIdeaData.push(newPostIdea)
-
-        this._callSubscriber(this)
+    // Methods of work with store
+    getState() {
+        return this._state
     },
-    updateNewPostIdea(textOfNewPostIdea) {
-        this._state.profilePage.newPostIdeaText = textOfNewPostIdea
-
-        this._callSubscriber(this)
-    },
-    // Messages
-    addMessage() {
-        let messageObject = {
-            id: this._state.dialogsPage.messagesData.length + 1,
-            text: this._state.dialogsPage.newMessageTextFromTextarea,
-            isMyMessage: true,
-        }
-
-        this._state.dialogsPage.messagesData.push(messageObject);
-
-        this._state.dialogsPage.newMessageTextFromTextarea = "";
-
-        this._callSubscriber(this)
-    },
-    updateNewMessage(textOfNewMessageTextarea) {
-        this._state.dialogsPage.newMessageTextFromTextarea = textOfNewMessageTextarea
-
-        this._callSubscriber(this)
-    },
-
-    // Subscribe
     subscribe(observer) {
         this._callSubscriber = observer
+    },
+
+    // Dispatch
+    dispatch(action) {
+        // Posts
+        if (action.type === ADD_POST_IDEA) {
+            let newPostIdea = {
+                id: this._state.profilePage.postIdeaData.length + 1,
+                likesCount: 0,
+                text: this._state.profilePage.newPostIdeaText,
+            }
+
+            this._state.profilePage.postIdeaData.push(newPostIdea)
+            this._callSubscriber(this)
+        }
+        else if (action.type === UPDATE_NEW_POST_IDEA) {
+            this._state.profilePage.newPostIdeaText = action.textFromNewPostIdeaTextarea
+            this._callSubscriber(this)
+        }
+        // Messages
+        else if (action.type === ADD_MESSAGE) {
+            let messageObject = {
+                id: this._state.dialogsPage.messagesData.length + 1,
+                text: this._state.dialogsPage.newMessageTextFromTextarea,
+                isMyMessage: true,
+            }
+
+            this._state.dialogsPage.messagesData.push(messageObject);
+            this._state.dialogsPage.newMessageTextFromTextarea = "";
+            this._callSubscriber(this)
+        }
+        else if (action.type === "UPDATE-NEW-MESSAGE") {
+            this._state.dialogsPage.newMessageTextFromTextarea = action.textFromNewMessageTextarea
+            this._callSubscriber(this)
+        }
+    },
+}
+
+// Action types
+let ADD_POST_IDEA = "ADD-POST-IDEA";
+let UPDATE_NEW_POST_IDEA = "UPDATE-NEW-POST-IDEA";
+let ADD_MESSAGE = "ADD-MESSAGE";
+let UPDATE_NEW_MESSAGE = "UPDATE-NEW-MESSAGE";
+
+
+// Action creators
+export const addIdeaPostActionCreator = () => {
+    return {
+        type: ADD_POST_IDEA,
+    }
+}
+
+export const updateNewPostIdeaActionCreator = (text) => {
+    return {
+        type: UPDATE_NEW_POST_IDEA,
+        textFromNewPostIdeaTextarea: text,
+    }
+}
+
+export const addMessageActionCreator = () => {
+    return {
+        type: ADD_MESSAGE,
+    }
+}
+
+export const updateNewMessageActionCreator = (text) => {
+    return {
+        type: UPDATE_NEW_MESSAGE,
+        textFromNewMessageTextarea: text,
     }
 }
 

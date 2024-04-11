@@ -9,8 +9,7 @@ function Profile(props) {
             <Ideas
                 postIdeaData={props.state.postIdeaData}
                 newPostIdeaText={props.state.newPostIdeaText}
-                addPostIdea={props.addPostIdea}
-                updateNewPostIdea={props.updateNewPostIdea}
+                dispatch={props.dispatch}
             />
         </section>
     );

@@ -1,19 +1,21 @@
 import IdeasStyles from "./Ideas.module.css"
 import Idea from "./Idea/Idea";
 import React from "react";
+import { addIdeaPostActionCreator, updateNewPostIdeaActionCreator } from "../../../redux/state";
+
 
 function Ideas(props) {
-    let createPostTextarea = React.createRef()
+    let createPostTextarea = React.createRef();
 
     let handleAddPost = () => {
-        props.addPostIdea()
-        props.updateNewPostIdea("")
-    }
+        props.dispatch(addIdeaPostActionCreator());
+        props.dispatch(updateNewPostIdeaActionCreator(""));
+    };
 
     let handleUpdateNewPostIdea = () => {
-        let textFromCreatePostTextarea = createPostTextarea.current.value
-        props.updateNewPostIdea(textFromCreatePostTextarea)
-    }
+        let textFromCreatePostTextarea = createPostTextarea.current.value;
+        props.dispatch(updateNewPostIdeaActionCreator(textFromCreatePostTextarea));
+    };
 
     return (
         <div className={IdeasStyles["ideas"]}>
@@ -40,4 +42,5 @@ function Ideas(props) {
         </div>
     );
 }
+
 export default Ideas

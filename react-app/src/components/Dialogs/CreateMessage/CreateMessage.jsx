@@ -1,18 +1,19 @@
 import React from "react";
 import CreateMessageStyles from "./CreateMessage.module.css"
+import { addMessageActionCreator, updateNewMessageActionCreator } from "../../../redux/state";
 
 function CreateMessage(props) {
 
-    let textFromWriteMessageTextarea = React.createRef();
+    let textarea = React.createRef();
 
     // Добавление сообщения в state
     let handleAddMessage = () => {
-        props.addMessage()
+        props.dispatch(addMessageActionCreator())
     };
 
     // Посимвольное обновление сообщения и его отрисовка
-    let handleUpdateWrittingMessage = () => {
-        props.updateNewMessage(textFromWriteMessageTextarea.current.value)
+    let handleUpdateNewMessage = () => {
+        props.dispatch(updateNewMessageActionCreator(textarea.current.value));
     };
 
 
@@ -21,10 +22,10 @@ function CreateMessage(props) {
             <textarea
                 className={CreateMessageStyles["write_message_textarea"]}
                 placeholder="Введите сообщение"
-                ref={textFromWriteMessageTextarea}
+                ref={textarea}
 
                 value={props.newMessageTextFromTextarea}
-                onChange={handleUpdateWrittingMessage}
+                onChange={handleUpdateNewMessage}
             >
 
             </textarea>
@@ -39,4 +40,5 @@ function CreateMessage(props) {
         </form>
     );
 }
+
 export default CreateMessage
