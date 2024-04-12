@@ -1,7 +1,7 @@
 import IdeasStyles from "./Ideas.module.css"
 import Idea from "./Idea/Idea";
 import React from "react";
-import { addIdeaPostActionCreator, updateNewPostIdeaActionCreator } from "../../../redux/state";
+import { addIdeaPostActionCreator, updateNewPostIdeaActionCreator } from "../../../redux/profile-reducer";
 
 
 function Ideas(props) {

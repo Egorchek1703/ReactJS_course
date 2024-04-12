@@ -1,3 +1,7 @@
+import profileReducer from "./profile-reducer";
+import dialogsReducer from "./dialogs-reducer";
+import navigationBlockReducer from "./navigation-block-reducer";
+
 // Store
 let store = {
     // Private properties
@@ -58,73 +62,13 @@ let store = {
 
     // Dispatch
     dispatch(action) {
-        // Posts
-        if (action.type === ADD_POST_IDEA) {
-            let newPostIdea = {
-                id: this._state.profilePage.postIdeaData.length + 1,
-                likesCount: 0,
-                text: this._state.profilePage.newPostIdeaText,
-            }
-
-            this._state.profilePage.postIdeaData.push(newPostIdea)
-            this._callSubscriber(this)
-        }
-        else if (action.type === UPDATE_NEW_POST_IDEA) {
-            this._state.profilePage.newPostIdeaText = action.textFromNewPostIdeaTextarea
-            this._callSubscriber(this)
-        }
-        // Messages
-        else if (action.type === ADD_MESSAGE) {
-            let messageObject = {
-                id: this._state.dialogsPage.messagesData.length + 1,
-                text: this._state.dialogsPage.newMessageTextFromTextarea,
-                isMyMessage: true,
-            }
-
-            this._state.dialogsPage.messagesData.push(messageObject);
-            this._state.dialogsPage.newMessageTextFromTextarea = "";
-            this._callSubscriber(this)
-        }
-        else if (action.type === "UPDATE-NEW-MESSAGE") {
-            this._state.dialogsPage.newMessageTextFromTextarea = action.textFromNewMessageTextarea
-            this._callSubscriber(this)
-        }
+        this._state.profilePage = profileReducer(this._state.profilePage, action)
+        this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action)
+        this._state.navigationBlock = navigationBlockReducer(this._state.navigationBlock, action)
+        this._callSubscriber(this)
     },
 }
 
-// Action types
-let ADD_POST_IDEA = "ADD-POST-IDEA";
-let UPDATE_NEW_POST_IDEA = "UPDATE-NEW-POST-IDEA";
-let ADD_MESSAGE = "ADD-MESSAGE";
-let UPDATE_NEW_MESSAGE = "UPDATE-NEW-MESSAGE";
-
-
-// Action creators
-export const addIdeaPostActionCreator = () => {
-    return {
-        type: ADD_POST_IDEA,
-    }
-}
-
-export const updateNewPostIdeaActionCreator = (text) => {
-    return {
-        type: UPDATE_NEW_POST_IDEA,
-        textFromNewPostIdeaTextarea: text,
-    }
-}
-
-export const addMessageActionCreator = () => {
-    return {
-        type: ADD_MESSAGE,
-    }
-}
-
-export const updateNewMessageActionCreator = (text) => {
-    return {
-        type: UPDATE_NEW_MESSAGE,
-        textFromNewMessageTextarea: text,
-    }
-}
 
 window.store = store
 
