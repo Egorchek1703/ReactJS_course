@@ -2,8 +2,19 @@
 const ADD_POST_IDEA = "ADD-POST-IDEA";
 const UPDATE_NEW_POST_IDEA = "UPDATE-NEW-POST-IDEA";
 
+// Initial state
+let initialState = {
+    postIdeaData: [
+        { id: 1, likesCount: 7, text: "I'm pooping" },
+        { id: 2, likesCount: 21, text: "Why don't we create an app" },
+        { id: 3, likesCount: 14, text: "How to create a react app?" },
+        { id: 4, likesCount: 52, text: "This's terribly difficult" },
+    ],
+    newPostIdeaText: "",
+}
+
 // Reducer
-const profileRecuder = (state, action) => {
+const profileRecuder = (state = initialState, action) => {
     // Posts
     switch (action.type) {
         case ADD_POST_IDEA:
