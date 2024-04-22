@@ -12,8 +12,7 @@ let renderEntireTree = (store) => {
     root.render(
         <BrowserRouter>
             <App
-                state={store.getState()}
-                dispatch={store.dispatch.bind(store)}
+                store={store}
             />
         </BrowserRouter>
     );
@@ -22,9 +21,9 @@ let renderEntireTree = (store) => {
 // Присваиваем _callSubscriber получение updatedStore внутри store.js и вызов renderEntireTree() внутри index.js, но передавая в него обновленный store из store.js
 store.subscribe(() => {
     // Обновляем значение store на каждый вызов функции
-    let updatedStore = structuredClone(store)
+    // let updatedStore = structuredClone(store)
     // Вызываем функцию ререндера опираясь на обновленный store
-    renderEntireTree(updatedStore)
+    renderEntireTree(store)
 })
 
 renderEntireTree(store)

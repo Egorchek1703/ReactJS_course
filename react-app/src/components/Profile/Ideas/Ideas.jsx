@@ -1,20 +1,23 @@
 import IdeasStyles from "./Ideas.module.css"
 import Idea from "./Idea/Idea";
 import React from "react";
-import { addIdeaPostActionCreator, updateNewPostIdeaActionCreator } from "../../../redux/profile-reducer";
+// Теперь импорты actionCreator'ов не нужны поэтому их можно удалить.
+// import { addIdeaPostActionCreator, updateNewPostIdeaActionCreator } from "../../../redux/profile-reducer";
 
 
 function Ideas(props) {
     let createPostTextarea = React.createRef();
 
     let handleAddPost = () => {
-        props.dispatch(addIdeaPostActionCreator());
-        props.dispatch(updateNewPostIdeaActionCreator(""));
+        // Функция взаимодейтсвия с store внутри контейнерной компоненты:
+        props.addPostIdea()
     };
 
     let handleUpdateNewPostIdea = () => {
         let textFromCreatePostTextarea = createPostTextarea.current.value;
-        props.dispatch(updateNewPostIdeaActionCreator(textFromCreatePostTextarea));
+
+        // Функция взаимодейтсвия с store внутри контейнерной компоненты:
+        props.updateNewPostIdea(textFromCreatePostTextarea)
     };
 
     return (
@@ -23,7 +26,10 @@ function Ideas(props) {
             <form className={IdeasStyles["create_idea_form"]} action="/">
                 <textarea
                     className={IdeasStyles["create_idea_textarea"]}
-                    value={props.newPostIdeaText}
+
+                    // Зависимость от state
+                    value={props.state.newPostIdeaText}
+
                     ref={createPostTextarea}
                     placeholder="What's your idea?"
                     onChange={handleUpdateNewPostIdea}
@@ -37,7 +43,12 @@ function Ideas(props) {
                 </button>
             </form>
             <ul className={IdeasStyles["list_of_ideas"]}>
-                {props.postIdeaData.map(post => <Idea textOfIdea={post.text} quantityOfLikes={post.likesCount} />)}
+
+                {
+                    // Зависимость от state
+                }
+                {props.state.postIdeaData.map(post => <Idea textOfIdea={post.text} quantityOfLikes={post.likesCount} />)}
+
             </ul>
         </div>
     );

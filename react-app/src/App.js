@@ -1,7 +1,7 @@
 import './App.css';
 import Header from './components/Header/Header';
 import Profile from './components/Profile/Profile';
-import Navigation from './components/Navigation/Navigation';
+import NavigationContainer from './components/Navigation/NavigationContainer';
 import Dialogs from './components/Dialogs/Dialogs';
 import Music from "./components/Music/Music";
 import News from "./components/News/News";
@@ -12,22 +12,30 @@ function App(props) {
   return (
     <div className="app_wrapper">
       <Header />
-      <Navigation state={props.state.navigationBlock} />
+
+      {
+        // ПОМЕНЯЛ PROPS
+      }
+      <NavigationContainer store={props.store} />
 
       <main className='app_wrapper_content'>
         <Routes>
           {/* Profile */}
           <Route
             path="/profile" element={<Profile
-              state={props.state.profilePage}
-              dispatch={props.dispatch}
+              // Теперь раделение store можно осуществить внутри контейнерной компоненты, поэтому передаем store полностью
+              // state={props.state.profilePage}
+              // dispatch={props.dispatch}
+              store={props.store}
             />}
           />
 
           {/* Dialogs */}
           <Route path="/dialogs" element={<Dialogs
-            state={props.state.dialogsPage}
-            dispatch={props.dispatch}
+
+            // ПОМЕНЯЛ PROPS
+            store={props.store}
+
           />}
           />
 

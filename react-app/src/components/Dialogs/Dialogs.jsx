@@ -1,22 +1,22 @@
 import DialogsStyles from "./Dialogs.module.css";
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
-import CreateMessage from "./CreateMessage/CreateMessage";
+import CreateMessageContainer from "./CreateMessage/CreateMessageContainer";
 
 function Dialogs(props) {
+    let localState = props.store.getState().dialogsPage
     return (
         <section className={DialogsStyles["dialogs"]}>
             <ul className={DialogsStyles["chats_list"]}>
-                {props.state.usersForChats.map((user) => <DialogItem name={user.name} surname={user.surname} id={user.id} />)}
+                {localState.usersForChats.map((user) => <DialogItem name={user.name} surname={user.surname} id={user.id} />)}
             </ul>
 
             <div className={DialogsStyles["messages_with_user"]}>
-                {props.state.messagesData.map((messageObject) => <Message messageText={messageObject.text} isMyMessage={messageObject.isMyMessage} />)}
+                {localState.messagesData.map((messageObject) => <Message messageText={messageObject.text} isMyMessage={messageObject.isMyMessage} />)}
             </div>
 
-            <CreateMessage
-                newMessageTextFromTextarea={props.state.newMessageTextFromTextarea}
-                dispatch={props.dispatch}
+            <CreateMessageContainer
+                store={props.store}
             />
         </section>
     );

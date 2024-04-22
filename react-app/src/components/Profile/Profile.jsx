@@ -1,15 +1,13 @@
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import ProfileStyles from "./Profile.module.css";
-import Ideas from "./Ideas/Ideas";
+import IdeasContainer from "./Ideas/IdeasContainer";
 
 function Profile(props) {
     return (
         <section className={ProfileStyles["profile"]}>
             <ProfileInfo />
-            <Ideas
-                postIdeaData={props.state.postIdeaData}
-                newPostIdeaText={props.state.newPostIdeaText}
-                dispatch={props.dispatch}
+            <IdeasContainer
+                store={props.store}
             />
         </section>
     );

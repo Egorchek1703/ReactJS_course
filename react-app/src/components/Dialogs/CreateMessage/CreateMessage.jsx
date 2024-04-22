@@ -1,6 +1,8 @@
 import React from "react";
 import CreateMessageStyles from "./CreateMessage.module.css"
-import { addMessageActionCreator, updateNewMessageActionCreator } from "../../../redux/dialogs-reducer";
+
+// Данные actionCreator'ы также теперь не нужны в презентационной компоненте
+// import { addMessageActionCreator, updateNewMessageActionCreator } from "../../../redux/dialogs-reducer";
 
 function CreateMessage(props) {
 
@@ -8,12 +10,14 @@ function CreateMessage(props) {
 
     // Добавление сообщения в state
     let handleAddMessage = () => {
-        props.dispatch(addMessageActionCreator())
+        props.addMessage()
     };
 
     // Посимвольное обновление сообщения и его отрисовка
     let handleUpdateNewMessage = () => {
-        props.dispatch(updateNewMessageActionCreator(textarea.current.value));
+        let textFromCreateMessageTextarea = textarea.current.value
+
+        props.updateNewMessage(textFromCreateMessageTextarea)
     };
 
 
@@ -24,7 +28,9 @@ function CreateMessage(props) {
                 placeholder="Введите сообщение"
                 ref={textarea}
 
-                value={props.newMessageTextFromTextarea}
+                // Зависимость от state
+                value={props.state.newMessageTextFromTextarea}
+
                 onChange={handleUpdateNewMessage}
             >
 
