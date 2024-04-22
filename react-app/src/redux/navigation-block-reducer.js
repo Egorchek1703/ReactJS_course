@@ -12,10 +12,9 @@ let initialState = {
 }
 
 const navigationBlockReducer = (state = initialState, action) => {
-
-
-    // В случае если action не подошёл
-    return state
+    switch (action.type) {
+        default: return state
+    }
 }
 
 export default navigationBlockReducer

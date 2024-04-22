@@ -1,22 +1,18 @@
 import React from "react";
 import CreateMessageStyles from "./CreateMessage.module.css"
 
-// Данные actionCreator'ы также теперь не нужны в презентационной компоненте
-// import { addMessageActionCreator, updateNewMessageActionCreator } from "../../../redux/dialogs-reducer";
-
 function CreateMessage(props) {
 
     let textarea = React.createRef();
 
-    // Добавление сообщения в state
     let handleAddMessage = () => {
-        props.addMessage()
+        if (textarea.current.value !== "") {
+            props.addMessage()
+        }
     };
 
-    // Посимвольное обновление сообщения и его отрисовка
     let handleUpdateNewMessage = () => {
         let textFromCreateMessageTextarea = textarea.current.value
-
         props.updateNewMessage(textFromCreateMessageTextarea)
     };
 
@@ -27,10 +23,7 @@ function CreateMessage(props) {
                 className={CreateMessageStyles["write_message_textarea"]}
                 placeholder="Введите сообщение"
                 ref={textarea}
-
-                // Зависимость от state
-                value={props.state.newMessageTextFromTextarea}
-
+                value={props.state}
                 onChange={handleUpdateNewMessage}
             >
 

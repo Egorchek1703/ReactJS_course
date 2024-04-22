@@ -34,7 +34,6 @@ function Navigation(props) {
             </ul>
 
             <section className={NavigationStyles["friends_in_sidebar"]}>
-                {/* На данный момент мы никак не изменяем store, а значит можно просто считать данные внутри контейнерной компоненты без передачи функций */}
                 {props.state.friendsInSidebar.map(friend => <Friend name={friend.name} avatarSRC={friend.avatarSRC} />)}
             </section>
         </nav>

@@ -9,42 +9,23 @@ import Settings from "./components/Settings/Settings";
 import { Routes, Route } from 'react-router-dom';
 
 function App(props) {
+
+
   return (
     <div className="app_wrapper">
       <Header />
-
-      {
-        // ПОМЕНЯЛ PROPS
-      }
-      <NavigationContainer store={props.store} />
+      <NavigationContainer />
 
       <main className='app_wrapper_content'>
         <Routes>
           {/* Profile */}
-          <Route
-            path="/profile" element={<Profile
-              // Теперь раделение store можно осуществить внутри контейнерной компоненты, поэтому передаем store полностью
-              // state={props.state.profilePage}
-              // dispatch={props.dispatch}
-              store={props.store}
-            />}
-          />
-
+          <Route path="/profile" element={<Profile />} />
           {/* Dialogs */}
-          <Route path="/dialogs" element={<Dialogs
-
-            // ПОМЕНЯЛ PROPS
-            store={props.store}
-
-          />}
-          />
-
+          <Route path="/dialogs" element={<Dialogs />} />
           {/* News */}
           <Route path="/news" element={<News />} />
-
           {/* Music */}
           <Route path="/music" element={<Music />} />
-
           {/* Settings */}
           <Route path="/settings" element={<Settings />} />
         </Routes>

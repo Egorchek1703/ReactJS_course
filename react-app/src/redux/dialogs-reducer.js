@@ -25,7 +25,6 @@ let initialState = {
 }
 
 const dialogsReducer = (state = initialState, action) => {
-    // Messages
     switch (action.type) {
         case ADD_MESSAGE:
             let messageObject = {
@@ -34,20 +33,27 @@ const dialogsReducer = (state = initialState, action) => {
                 isMyMessage: true,
             }
 
-            state.messagesData.push(messageObject);
-            state.newMessageTextFromTextarea = "";
-            return state
+            // state.messagesData.push(messageObject);
+            // state.newMessageTextFromTextarea = "";
+
+            return {
+                ...state,
+                messagesData: state.messagesData.concat(messageObject),
+                newMessageTextFromTextarea: "",
+            }
 
         case UPDATE_NEW_MESSAGE:
-            state.newMessageTextFromTextarea = action.textFromNewMessageTextarea;
-            return state;
+
+            // state.newMessageTextFromTextarea = action.textFromNewMessageTextarea;
+
+            return {
+                ...state,
+                newMessageTextFromTextarea: action.textFromNewMessageTextarea,
+            };
 
         default:
-            // В случае если action не подошёл вернется тот же state который и был, а в случае если проверки (if else) сработали, вернется измененный state.
             return state;
     }
-
-
 }
 
 // Action creators

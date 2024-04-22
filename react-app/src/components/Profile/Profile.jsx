@@ -6,9 +6,7 @@ function Profile(props) {
     return (
         <section className={ProfileStyles["profile"]}>
             <ProfileInfo />
-            <IdeasContainer
-                store={props.store}
-            />
+            <IdeasContainer />
         </section>
     );
 }

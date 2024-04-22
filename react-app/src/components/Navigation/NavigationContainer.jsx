@@ -1,10 +1,20 @@
+import StoreContext from "../../StoreContext";
 import Navigation from "./Navigation";
 
-function NavigationContainer(props) {
-    let localState = props.store.getState().navigationBlock;
-
+function NavigationContainer() {
     return (
-        <Navigation state={localState} />
+        <StoreContext.Consumer>
+            {
+                (store) => {
+                    let localState = store.getState().navigationBlock;
+
+                    return (
+                        <Navigation state={localState} />
+                    );
+                }
+            }
+        </StoreContext.Consumer>
     );
 }
+
 export default NavigationContainer

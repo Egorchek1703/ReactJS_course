@@ -18,18 +18,28 @@ const profileRecuder = (state = initialState, action) => {
     // Posts
     switch (action.type) {
         case ADD_POST_IDEA:
-            let newPostIdea = {
+            let newPostIdeaObject = {
                 id: state.postIdeaData.length + 1,
                 likesCount: 0,
                 text: state.newPostIdeaText,
             }
 
-            state.postIdeaData.push(newPostIdea)
-            return state
+            // state.postIdeaData.push(newPostIdea)
+
+            return {
+                ...state,
+                postIdeaData: state.postIdeaData.concat(newPostIdeaObject),
+                newPostIdeaText: "",
+            }
 
         case UPDATE_NEW_POST_IDEA:
-            state.newPostIdeaText = action.textFromNewPostIdeaTextarea
-            return state
+
+            // state.newPostIdeaText = action.textFromNewPostIdeaTextarea
+
+            return {
+                ...state,
+                newPostIdeaText: action.textFromNewPostIdeaTextarea,
+            }
 
         default:
             return state
