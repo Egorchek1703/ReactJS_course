@@ -2,7 +2,7 @@ import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import ProfileStyles from "./Profile.module.css";
 import IdeasContainer from "./Ideas/IdeasContainer";
 
-function Profile(props) {
+function Profile() {
     return (
         <section className={ProfileStyles["profile"]}>
             <ProfileInfo />
