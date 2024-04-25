@@ -7,11 +7,15 @@ function Dialogs(props) {
     return (
         <section className={DialogsStyles["dialogs"]}>
             <ul className={DialogsStyles["chats_list"]}>
-                {props.dialogsPage.usersForChats.map((user) => <DialogItem name={user.name} surname={user.surname} id={user.id} />)}
+                {props.dialogsPage.usersForChats.map((user) => {
+                    return <DialogItem name={user.name} surname={user.surname} id={user.id} key={user.id} />
+                })}
             </ul>
 
             <div className={DialogsStyles["messages_with_user"]}>
-                {props.dialogsPage.messagesData.map((messageObject) => <Message messageText={messageObject.text} isMyMessage={messageObject.isMyMessage} />)}
+                {props.dialogsPage.messagesData.map((messageObject) => {
+                    return <Message messageText={messageObject.text} isMyMessage={messageObject.isMyMessage} key={messageObject.id} />
+                })}
             </div>
 
             <CreateMessageContainer />

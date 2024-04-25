@@ -1,8 +1,6 @@
-// Action types
 let ADD_MESSAGE = "ADD-MESSAGE";
 let UPDATE_NEW_MESSAGE = "UPDATE-NEW-MESSAGE";
 
-// Initial state
 let initialState = {
     usersForChats: [
         { id: 1, name: "Лиза", surname: "Кочеткова", age: 23 },
@@ -25,6 +23,11 @@ let initialState = {
 }
 
 const dialogsReducer = (state = initialState, action) => {
+
+    // Создание общей переменной для копии объекта state
+    // Менее удобный вариант (для меня)
+    // let stateCopy;
+
     switch (action.type) {
         case ADD_MESSAGE:
             let messageObject = {
@@ -33,18 +36,30 @@ const dialogsReducer = (state = initialState, action) => {
                 isMyMessage: true,
             }
 
-            // state.messagesData.push(messageObject);
-            // state.newMessageTextFromTextarea = "";
+            // Глубокое копирование тех частей которые будут изменены
+            // Менее удобный вариант (для меня)
+            // stateCopy = {
+            //     ...state,
+            //     messagesData: state.messagesData.concat(messageObject),
+            //     newMessageTextFromTextarea: "",
+            // }
+            // return stateCopy;
 
             return {
                 ...state,
                 messagesData: state.messagesData.concat(messageObject),
                 newMessageTextFromTextarea: "",
-            }
+            };
 
         case UPDATE_NEW_MESSAGE:
 
-            // state.newMessageTextFromTextarea = action.textFromNewMessageTextarea;
+            // Глубокое копирование тех частей которые будут изменены
+            // Менее удобный вариант (для меня)
+            // stateCopy = {
+            //     ...state,
+            //     newMessageTextFromTextarea: action.textFromNewMessageTextarea,
+            // }
+            // return stateCopy;
 
             return {
                 ...state,
@@ -56,7 +71,6 @@ const dialogsReducer = (state = initialState, action) => {
     }
 }
 
-// Action creators
 export const addMessageActionCreator = () => {
     return {
         type: ADD_MESSAGE,

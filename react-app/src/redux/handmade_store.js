@@ -2,9 +2,8 @@ import profileReducer from "./profile-reducer";
 import dialogsReducer from "./dialogs-reducer";
 import navigationBlockReducer from "./navigation-block-reducer";
 
-// Store
+
 let store = {
-    // Private properties
     _state: {
         dialogsPage: {
             usersForChats: [
@@ -48,11 +47,10 @@ let store = {
             ]
         },
     },
+
     _callSubscriber() {
         console.log("Это заглушка");
     },
-
-    // Methods of work with store
     getState() {
         return this._state
     },
@@ -60,7 +58,6 @@ let store = {
         this._callSubscriber = observer
     },
 
-    // Dispatch
     dispatch(action) {
         this._state.profilePage = profileReducer(this._state.profilePage, action)
         this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action)
@@ -69,7 +66,5 @@ let store = {
     },
 }
 
-
-window.store = store
 
 export default store

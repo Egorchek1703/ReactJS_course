@@ -6,7 +6,6 @@ let mapStateToProps = (state) => {
         dialogsPage: state.dialogsPage,
     }
 }
-
 let mapDispatchToProps = (dispatch) => {
     return {
 

@@ -1,8 +1,6 @@
-// Action types
 const ADD_POST_IDEA = "ADD-POST-IDEA";
 const UPDATE_NEW_POST_IDEA = "UPDATE-NEW-POST-IDEA";
 
-// Initial state
 let initialState = {
     postIdeaData: [
         { id: 1, likesCount: 7, text: "I'm pooping" },
@@ -13,9 +11,7 @@ let initialState = {
     newPostIdeaText: "",
 }
 
-// Reducer
-const profileRecuder = (state = initialState, action) => {
-    // Posts
+const profileReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_POST_IDEA:
             let newPostIdeaObject = {
@@ -24,8 +20,6 @@ const profileRecuder = (state = initialState, action) => {
                 text: state.newPostIdeaText,
             }
 
-            // state.postIdeaData.push(newPostIdea)
-
             return {
                 ...state,
                 postIdeaData: state.postIdeaData.concat(newPostIdeaObject),
@@ -33,9 +27,6 @@ const profileRecuder = (state = initialState, action) => {
             }
 
         case UPDATE_NEW_POST_IDEA:
-
-            // state.newPostIdeaText = action.textFromNewPostIdeaTextarea
-
             return {
                 ...state,
                 newPostIdeaText: action.textFromNewPostIdeaTextarea,
@@ -46,7 +37,6 @@ const profileRecuder = (state = initialState, action) => {
     }
 }
 
-// Action creators
 export const addIdeaPostActionCreator = () => {
     return {
         type: ADD_POST_IDEA,
@@ -60,4 +50,4 @@ export const updateNewPostIdeaActionCreator = (text) => {
 }
 
 
-export default profileRecuder
+export default profileReducer

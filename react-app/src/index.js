@@ -3,8 +3,7 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
-
-import store from './redux/redux-store';
+import store from './store';
 
 
 const root = ReactDOM.createRoot(document.getElementById("root"))
@@ -12,17 +11,11 @@ const root = ReactDOM.createRoot(document.getElementById("root"))
 let renderEntireTree = (store) => {
     root.render(
         <BrowserRouter>
-            <Provider value={store}>
-                <App
-                    store={store}
-                />
+            <Provider store={store} >
+                <App />
             </Provider>
         </BrowserRouter>
     );
 };
-
-store.subscribe(() => {
-    renderEntireTree(store)
-})
 
 renderEntireTree(store)

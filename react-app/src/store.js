@@ -1,7 +1,8 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import profileRecuder from "./profile-reducer";
-import dialogsReducer from "./dialogs-reducer";
-import navigationBlockReducer from "./navigation-block-reducer"
+import profileRecuder from "./redux/profile-reducer";
+import dialogsReducer from "./redux/dialogs-reducer";
+import navigationBlockReducer from "./redux/navigation-block-reducer"
+
 
 let reducers = combineReducers({
     profilePage: profileRecuder,
@@ -12,7 +13,6 @@ let reducers = combineReducers({
 let store = configureStore({
     reducer: reducers,
 })
-
 
 
 export default store

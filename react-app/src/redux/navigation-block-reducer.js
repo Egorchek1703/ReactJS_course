@@ -1,5 +1,3 @@
-
-// Initial state
 let initialState = {
     friendsInSidebar: [
         { id: 1, name: "Лиза", surname: "Кочеткова", avatarSRC: "../../../images/friend_avatar.jpg" },

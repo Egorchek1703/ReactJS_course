@@ -34,7 +34,9 @@ function Navigation(props) {
             </ul>
 
             <section className={NavigationStyles["friends_in_sidebar"]}>
-                {props.friendsInSidebar.map(friend => <Friend name={friend.name} avatarSRC={friend.avatarSRC} />)}
+                {props.friendsInSidebar.map(friend => {
+                    return <Friend name={friend.name} avatarSRC={friend.avatarSRC} key={friend.id} />
+                })}
             </section>
         </nav>
     );

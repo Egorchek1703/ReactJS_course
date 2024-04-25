@@ -20,7 +20,7 @@ function Ideas(props) {
             <form className={IdeasStyles["create_idea_form"]} action="/">
                 <textarea
                     className={IdeasStyles["create_idea_textarea"]}
-                    value={props.propfilePage.newPostIdeaText}
+                    value={props.profilePage.newPostIdeaText}
                     ref={createPostTextarea}
                     placeholder="What's your idea?"
                     onChange={handleUpdateNewPostIdea}
@@ -34,7 +34,9 @@ function Ideas(props) {
                 </button>
             </form>
             <ul className={IdeasStyles["list_of_ideas"]}>
-                {props.propfilePage.postIdeaData.map(post => <Idea textOfIdea={post.text} quantityOfLikes={post.likesCount} />)}
+                {props.profilePage.postIdeaData.map(post => {
+                    return <Idea textOfIdea={post.text} quantityOfLikes={post.likesCount} key={post.id} />
+                })}
             </ul>
         </div>
     );
