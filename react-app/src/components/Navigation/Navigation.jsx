@@ -17,6 +17,11 @@ function Navigation(props) {
                     </NavLink>
                 </li>
                 <li className={NavigationStyles["item"]}>
+                    <NavLink to="/users" className={navData => navData.isActive ? NavigationStyles.active : NavigationStyles.link}>
+                        Users
+                    </NavLink>
+                </li>
+                <li className={NavigationStyles["item"]}>
                     <NavLink to="/news" className={navData => navData.isActive ? NavigationStyles.active : NavigationStyles.link}>
                         News
                     </NavLink>

@@ -1,0 +1,175 @@
+.users {
+    width: 100%;
+}
+
+.users_list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+
+    padding: 0px;
+}
+
+.user_card {
+    width: 74%;
+    display: flex;
+    justify-content: center;
+
+    gap: 14px;
+    padding: 0px;
+}
+
+/* Avatar and button */
+.avatar_and_btn {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 10px;
+    padding: 10px 0px;
+}
+
+.avatar_and_btn img {
+    width: 76px;
+    height: 76px;
+    border-radius: 50%;
+
+    cursor: pointer;
+    transition: all ease .4s;
+}
+
+.avatar_and_btn img:hover {
+    box-shadow: 0px 0px 15px rgb(21, 182, 251);
+}
+
+.avatar_and_btn button {
+    background: transparent;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all ease .4s;
+}
+
+.avatar_and_btn button:hover {
+    transform: translateY(1px);
+}
+
+.followButton {
+    color: rgb(21, 182, 251);
+    border: 2px solid rgb(21, 182, 251);
+}
+
+.followButton:hover {
+    color: rgba(87, 82, 82, .4);
+    border: 2px solid rgba(87, 82, 82, .2);
+}
+
+.unfollowButton {
+    color: rgba(87, 82, 82, .4);
+    border: 2px solid rgba(87, 82, 82, .5);
+}
+
+.unfollowButton:hover {
+    color: rgba(21, 182, 251, .2);
+    border: 2px solid rgba(21, 182, 251, .3);
+}
+
+/* User info */
+.user_info {
+    width: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 20px 40px 20px 20px;
+
+    border: 2px solid rgb(21, 182, 251);
+    border-radius: 36px;
+}
+
+/* User name and status */
+
+.user_name_and_status {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+
+    gap: 10px;
+    padding: 8px 0;
+}
+
+.user_name {
+    font-size: 26px;
+    font-weight: 800;
+    color: rgb(21, 182, 251);
+}
+
+.user_status {
+    color: rgba(21, 182, 251, .4);
+
+    font-size: 17px;
+    font-weight: 500;
+
+    padding-bottom: 5px;
+
+    transition: all ease .4s;
+    cursor: pointer;
+}
+
+.user_status:hover {
+    color: rgb(21, 182, 251);
+}
+
+/* User location */
+.user_location {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-between;
+    height: 100%;
+
+    padding: 6px 0;
+    gap: 10px;
+}
+
+.country {
+    font-size: 14px;
+    font-weight: 600;
+    color: rgb(21, 182, 251);
+}
+
+.city {
+    font-size: 16px;
+    font-weight: 600;
+    color: rgb(21, 182, 251);
+}
+
+/* Show more */
+
+.show_more_btn {
+    display: block;
+    margin: 20px auto 0 auto;
+    padding: 5px 16px;
+
+    font-size: 15px;
+    font-weight: 500;
+
+    background: transparent;
+    color: rgb(21, 182, 251);
+    border: 2px solid rgb(21, 182, 251);
+    border-radius: 16px;
+
+    cursor: pointer;
+    transition: all ease .4s;
+}
+
+.show_more_btn:hover {
+    background: rgb(21, 182, 251);
+    color: #171717;
+    border: 2px solid rgb(21, 182, 251);
+}

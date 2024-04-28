@@ -1,7 +1,7 @@
 .header {
     grid-area: header;
     background: #171717;
-    padding: 10px 0 5px 0;
+    padding: 10px 0 0 0;
 }
 
 .header_logo {
@@ -11,8 +11,8 @@
 }
 
 .logo_img {
-    width: 52px;
-    height: 52px;
+    width: 46px;
+    height: 46px;
 }
 
 .logo_text {

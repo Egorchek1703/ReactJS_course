@@ -23,11 +23,6 @@ let initialState = {
 }
 
 const dialogsReducer = (state = initialState, action) => {
-
-    // Создание общей переменной для копии объекта state
-    // Менее удобный вариант (для меня)
-    // let stateCopy;
-
     switch (action.type) {
         case ADD_MESSAGE:
             let messageObject = {
@@ -36,15 +31,6 @@ const dialogsReducer = (state = initialState, action) => {
                 isMyMessage: true,
             }
 
-            // Глубокое копирование тех частей которые будут изменены
-            // Менее удобный вариант (для меня)
-            // stateCopy = {
-            //     ...state,
-            //     messagesData: state.messagesData.concat(messageObject),
-            //     newMessageTextFromTextarea: "",
-            // }
-            // return stateCopy;
-
             return {
                 ...state,
                 messagesData: state.messagesData.concat(messageObject),
@@ -52,14 +38,6 @@ const dialogsReducer = (state = initialState, action) => {
             };
 
         case UPDATE_NEW_MESSAGE:
-
-            // Глубокое копирование тех частей которые будут изменены
-            // Менее удобный вариант (для меня)
-            // stateCopy = {
-            //     ...state,
-            //     newMessageTextFromTextarea: action.textFromNewMessageTextarea,
-            // }
-            // return stateCopy;
 
             return {
                 ...state,

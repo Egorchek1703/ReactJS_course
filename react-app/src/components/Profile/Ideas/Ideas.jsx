@@ -6,7 +6,9 @@ function Ideas(props) {
     let createPostTextarea = React.createRef();
 
     let handleAddPost = () => {
-        props.addPostIdea()
+        if (createPostTextarea.current.value !== "") {
+            props.addPostIdea()
+        }
     };
 
     let handleUpdateNewPostIdea = () => {
