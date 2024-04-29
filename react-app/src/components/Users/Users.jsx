@@ -1,14 +1,14 @@
-import UsersStyles from "./Users.module.css"
+import UsersStyles from "./Users.module.css";
+import BaseUserAvatar from "../../images/user_without_photo.jpg";
+import axios from "axios";
 
 function Users(props) {
 
     if (props.users.length === 0) {
-        props.setUsers([
-            { id: "1", avatarURL: "https://worldpodium.ru/sites/default/files/styles/400x400sc/public/gosha_rubchinskiy.jpg?itok=q5UPHzac", firstName: "Gosha", secondName: "Rubchinskiy", status: "I'm a big lover of potatoes", followed: true, location: { country: "Russia", city: "Moscow" } },
-            { id: "2", avatarURL: "https://sun9-21.userapi.com/impg/E0ae8Uliu5G7iW-SkYcbW8vRGislwMNPaVdSMw/OoltFhFrKYI.jpg?size=800x800&quality=96&sign=6c927f6e823a4af40468e1ac54d0dd12&c_uniq_tag=1nZ2zwsZBqrlTYcgjRkIH3jppxBw3QjzjRNLcCSgAlU&type=album", firstName: "Alexey", secondName: "Konovalov", status: "Don't be afraid if you are one, be afraid if you are two", followed: false, location: { country: "Russia", city: "Chelyabinsk" } },
-            { id: "3", avatarURL: "https://yk-resurs.ru/wp-content/uploads/3/4/8/348cc2bd09923386ef3cc2a39a4453d7.jpeg", firstName: "Ramhat", secondName: "Kazandaev", status: "UoyBoy", followed: true, location: { country: "Kazahstan", city: "Alma-Aty" } },
-            { id: "4", avatarURL: "https://asiaplustj.info/sites/default/files/articles/333185/6.jpg", firstName: "John", secondName: "Smith", status: "Democracy", followed: false, location: { country: "USA", city: "Chicago" } },
-        ])
+        axios.get("https://social-network.samuraijs.com/api/1.0/users").then((response) => {
+            let users = response.data.items
+            props.setUsers(users)
+        })
     }
 
 
@@ -36,7 +36,7 @@ function Users(props) {
                             <li key={user.id} className={UsersStyles["user_card"]}>
                                 {/* Avatar + button */}
                                 <div className={UsersStyles["avatar_and_btn"]}>
-                                    <img src={user.avatarURL} alt="Avatar" />
+                                    <img src={user.photos.small !== null ? (user.photos.small) : BaseUserAvatar} alt="Avatar" />
                                     <button
                                         type="button"
                                         className={user.followed ? UsersStyles["unfollowButton"] : UsersStyles["followButton"]}
@@ -50,7 +50,7 @@ function Users(props) {
                                 <div className={UsersStyles["user_info"]}>
                                     <div className={UsersStyles["user_name_and_status"]}>
                                         <p className={UsersStyles["user_name"]}>
-                                            {user.firstName} {user.secondName}
+                                            {user.name}
                                         </p>
                                         <p className={UsersStyles["user_status"]}>
                                             {user.status}
@@ -59,10 +59,10 @@ function Users(props) {
 
                                     <div className={UsersStyles["user_location"]}>
                                         <p className={UsersStyles["city"]}>
-                                            {user.location.city}
+                                            {"user.location.city"}
                                         </p>
                                         <p className={UsersStyles["country"]}>
-                                            {user.location.country}
+                                            {"user.location.country"}
                                         </p>
                                     </div>
                                 </div>
