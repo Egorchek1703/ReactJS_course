@@ -173,3 +173,27 @@
     color: #171717;
     border: 2px solid rgb(21, 182, 251);
 }
+
+/* Pages */
+.pages_block {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.page {
+    font-size: 20px;
+    color: rgb(21, 182, 251);
+    margin-right: 5px;
+
+    cursor: pointer;
+}
+
+.selected_page {
+    font-size: 20px;
+    font-weight: 900;
+    margin-right: 5px;
+    color: cornflowerblue;
+    text-decoration: underline;
+
+    cursor: pointer;
+}
