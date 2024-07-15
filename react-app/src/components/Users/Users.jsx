@@ -1,5 +1,6 @@
 import UsersStyles from "./Users.module.css";
 import BaseUserAvatar from "../../images/user_without_photo.jpg";
+import { Link } from "react-router-dom"
 
 let Users = (props) => {
 
@@ -35,7 +36,9 @@ let Users = (props) => {
                             <li key={user.id} className={UsersStyles["user_card"]}>
                                 {/* Avatar + button */}
                                 <div className={UsersStyles["avatar_and_btn"]}>
-                                    <img src={user.photos.small !== null ? (user.photos.small) : BaseUserAvatar} alt="Avatar" />
+                                    <Link to={`/profile/${user.id}`}>
+                                        <img src={user.photos.small !== null ? (user.photos.small) : BaseUserAvatar} alt="Avatar" />
+                                    </Link>
                                     <button
                                         type="button"
                                         className={user.followed ? UsersStyles["unfollowButton"] : UsersStyles["followButton"]}

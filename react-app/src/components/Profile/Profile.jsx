@@ -2,10 +2,12 @@ import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import ProfileStyles from "./Profile.module.css";
 import IdeasContainer from "./Ideas/IdeasContainer";
 
-function Profile() {
+function Profile(props) {
     return (
         <section className={ProfileStyles["profile"]}>
-            <ProfileInfo />
+            <ProfileInfo
+                currentUser={props.currentUser}
+            />
             <IdeasContainer />
         </section>
     );

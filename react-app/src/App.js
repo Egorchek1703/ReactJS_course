@@ -1,6 +1,6 @@
 import './App.css';
 import Header from './components/Header/Header';
-import Profile from './components/Profile/Profile';
+import ProfileContainer from './components/Profile/ProfileContainer';
 import NavigationContainer from './components/Navigation/NavigationContainer';
 import DialogsContainer from './components/Dialogs/DialogsContainer';
 import UsersContainer from './components/Users/UsersContainer';
@@ -19,7 +19,7 @@ function App() {
       <main className='app_wrapper_content'>
         <Routes>
           {/* Profile */}
-          <Route path="/profile" element={<Profile />} />
+          <Route path="/profile" element={<ProfileContainer />} />
           {/* Dialogs */}
           <Route path="/dialogs" element={<DialogsContainer />} />
           {/* Users */}

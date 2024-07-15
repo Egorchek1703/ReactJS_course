@@ -1,7 +1,14 @@
 import React from "react";
 import axios from "axios";
 import { connect } from "react-redux";
-import { followActionCreator, unfollowActionCreator, setUsersActionCreator, changeCurrentPageActionCreator, setQuantityOfUsersActionCreator, changeLoadingStatusActionCreator } from "../../redux/users-reducer";
+import {
+    followActionCreator,
+    unfollowActionCreator,
+    setUsersActionCreator,
+    changeCurrentPageActionCreator,
+    setQuantityOfUsersActionCreator,
+    changeLoadingStatusActionCreator
+} from "../../redux/users-reducer";
 import Users from "./Users";
 import Preloader from "../Common/Preloader/Preloader";
 
@@ -11,15 +18,17 @@ class UsersAPIContainer extends React.Component {
         // Перед тем как выполнится запрос показываем preloader
         this.props.changeLoadingStatus(true)
 
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`).then((response) => {
-            let users = response.data.items
-            let totalUsersCount = response.data.totalCount
-            this.props.setUsers(users)
-            this.props.setQuantityOfUsers(totalUsersCount)
-        }).then(() => {
-            // После того, как данные получены выключаем preloader
-            this.props.changeLoadingStatus(false)
-        })
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
+            .then((response) => {
+                let users = response.data.items
+                let totalUsersCount = response.data.totalCount
+                this.props.setUsers(users)
+                this.props.setQuantityOfUsers(totalUsersCount)
+            })
+            .then(() => {
+                // После того, как данные получены выключаем preloader
+                this.props.changeLoadingStatus(false)
+            })
     }
 
     render() {

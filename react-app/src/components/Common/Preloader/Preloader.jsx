@@ -1,7 +1,8 @@
 import PreloaderStyles from "./Preloader.module.css"
 import preloader from "../../../images/preloader.svg";
 
-function Preloader() {
+
+const Preloader = () => {
     return (
         <div className={PreloaderStyles["loading_block"]}>
             <div className={PreloaderStyles["preloading_overlay"]}>

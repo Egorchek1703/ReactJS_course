@@ -1,8 +1,8 @@
 import ProfileShapka from "../../../images/shapka-profile.jpg";
-import Avatar from "../../../images/avatar.jpeg";
+import BaseUserAvatar from "../../../images/user_without_photo.jpg";
 import ProfileInfoStyles from "./ProfileInfo.module.css";
 
-function ProfileInfo() {
+function ProfileInfo(props) {
     return (
         <div className={ProfileInfoStyles["profile_info"]}>
             <div className={ProfileInfoStyles["profile_info_header"]}>
@@ -10,11 +10,10 @@ function ProfileInfo() {
             </div>
 
             <div className={ProfileInfoStyles["photo_and_description"]}>
-                <img className={ProfileInfoStyles["photo"]} src={Avatar} alt="avatar" draggable />
+                <img className={ProfileInfoStyles["photo"]} src={(props.currentUser.photos && props.currentUser.photos.small !== "") ? props.currentUser.photos.small : BaseUserAvatar} alt="avatar" draggable />
                 <div className={ProfileInfoStyles["description"]}>
-                    <h3>Егор Семёнов</h3>
-                    <p>Возраст: <span>23</span></p>
-                    <p>Не бойся когда ты один, бойся когда ты два</p>
+                    <h3>{props.currentUser.fullName}</h3>
+                    <p>{props.currentUser.aboutMe}</p>
                 </div>
             </div>
         </div>
