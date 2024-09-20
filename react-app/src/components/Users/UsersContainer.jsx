@@ -1,5 +1,4 @@
 import React from "react";
-import axios from "axios";
 import { connect } from "react-redux";
 import {
     followActionCreator,
@@ -11,6 +10,7 @@ import {
 } from "../../redux/users-reducer";
 import Users from "./Users";
 import Preloader from "../Common/Preloader/Preloader";
+import { usersAPI } from "../../api/API";
 
 
 class UsersAPIContainer extends React.Component {
@@ -18,10 +18,10 @@ class UsersAPIContainer extends React.Component {
         // Перед тем как выполнится запрос показываем preloader
         this.props.changeLoadingStatus(true)
 
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
-            .then((response) => {
-                let users = response.data.items
-                let totalUsersCount = response.data.totalCount
+        usersAPI.getUsers(this.props.currentPage, this.props.pageSize)
+            .then((data) => {
+                let users = data.items
+                let totalUsersCount = data.totalCount
                 this.props.setUsers(users)
                 this.props.setQuantityOfUsers(totalUsersCount)
             })
@@ -47,19 +47,16 @@ class UsersAPIContainer extends React.Component {
                     handleFollowUser={this.handleFollowUser}
                     handleUnfollowUser={this.handleUnfollowUser}
                     handleChangeCurrentPage={this.handleChangeCurrentPage}
-                    zaglushka={this.zaglushka}
                 />
             </>
         );
     }
 
-    handleFollowUser = (event) => {
-        let userId = event.target.getAttribute("data-id");
+    handleFollowUser = (userId) => {
         this.props.follow(userId);
     }
 
-    handleUnfollowUser = (event) => {
-        let userId = event.target.getAttribute("data-id");
+    handleUnfollowUser = (userId) => {
         this.props.unfollow(userId);
     }
 
@@ -68,17 +65,15 @@ class UsersAPIContainer extends React.Component {
         this.props.changeLoadingStatus(true)
 
         this.props.changeCurrentPage(newPageNumber)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${newPageNumber}&count=${this.props.pageSize}`).then((response) => {
-            let users = response.data.items
-            this.props.setUsers(users)
-        }).then(() => {
-            // После того, как данные получены выключаем preloader
-            this.props.changeLoadingStatus(false)
-        })
-    }
 
-    zaglushka = () => {
-        alert("Заглушка")
+        usersAPI.getUsers(newPageNumber, this.props.pageSize)
+            .then((data) => {
+                let users = data.items
+                this.props.setUsers(users)
+            }).then(() => {
+                // После того, как данные получены выключаем preloader
+                this.props.changeLoadingStatus(false)
+            })
     }
 }
 

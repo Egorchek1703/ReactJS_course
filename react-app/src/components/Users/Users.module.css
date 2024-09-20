@@ -149,35 +149,13 @@
     color: rgb(21, 182, 251);
 }
 
-/* Show more */
-
-.show_more_btn {
-    display: block;
-    margin: 20px auto 0 auto;
-    padding: 5px 16px;
-
-    font-size: 15px;
-    font-weight: 500;
-
-    background: transparent;
-    color: rgb(21, 182, 251);
-    border: 2px solid rgb(21, 182, 251);
-    border-radius: 16px;
-
-    cursor: pointer;
-    transition: all ease .4s;
-}
-
-.show_more_btn:hover {
-    background: rgb(21, 182, 251);
-    color: #171717;
-    border: 2px solid rgb(21, 182, 251);
-}
-
 /* Pages */
 .pages_block {
-    display: flex;
+    display: block;
+    width: 100%;
+    text-align: center;
     flex-wrap: wrap;
+    padding: 24px;
 }
 
 .page {

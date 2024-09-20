@@ -1,7 +1,13 @@
 .header {
     grid-area: header;
     background: #171717;
+
+    margin-bottom: 20px;
     padding: 10px 0 0 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .header_logo {
@@ -18,4 +24,55 @@
 .logo_text {
     margin-left: 14px;
     color: rgb(21, 182, 251);
+}
+
+/* Authorization */
+.login {
+    font-size: 18px;
+    font-weight: 600;
+    color: rgb(21, 182, 251);
+
+    transition: all ease .4s;
+    cursor: pointer;
+}
+
+.login:hover {
+    color: cornflowerblue;
+}
+
+.auth_buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.sign_in_btn {
+    width: 32px;
+    height: 32px;
+    background: url("../../images/auth_icons/sign_in.png");
+    background-size: 32px 32px;
+    background-position: center;
+    transition: all ease .4s;
+}
+
+.sign_up_btn {
+    width: 32px;
+    height: 32px;
+    background: url("../../images/auth_icons/sign_up.png");
+    background-size: 32px 32px;
+    background-position: center;
+    transition: all ease .4s;
+}
+
+.sign_in_btn:hover {
+    background: url("../../images/auth_icons/sign_in_hovered.png");
+    background-size: 32px 32px;
+    background-position: center;
+}
+
+.sign_up_btn:hover {
+    background: url("../../images/auth_icons/sign_up_hovered.png");
+    background-size: 32px 32px;
+    background-position: center;
 }
